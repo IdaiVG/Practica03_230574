@@ -45,7 +45,7 @@ app.get('/session',(req,res)=>{
 
 //Ruta para cerrar la sesión
 app.get('/logout',(req,res)=>{
-    res.session.destroy((err)=>{
+    req.session.destroy((err)=>{
         if(err){
             return res.send('Error al cerrar sesion.');
         }
