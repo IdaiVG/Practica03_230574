@@ -1,0 +1,19 @@
+{
+  "name": "mx.utxj.awi4.230574.practica03",
+  "version": "1.0.0",
+  "description": "Repaso de conceptos de manejo de sesiones",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express",
+    "Session"
+  ],
+  "author": "Guadalupe Idai Vargas Galindo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
+  }
+}
