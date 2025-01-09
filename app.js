@@ -40,12 +40,8 @@ app.get('/session',(req,res)=>{
             <p><strong>último acceso:</strong>${lastAccess}</p>
             <p><strong>Duración de la sesión (en segundos):</strong>${sessionDuration}</p>
             `);
-    }else{
-        
     }
 })
-
-
 
 //Ruta para cerrar la sesión
 app.get('/logout',(req,res)=>{
