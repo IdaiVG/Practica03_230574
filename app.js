@@ -29,13 +29,16 @@ app.use((req,res, next)=>{
 app.get('/session',(req,res)=>{
     if(req.session){
         const sessionId = req.session.id;
+        const user = req.session.user;
         const createdAt = req.session.createdAt;
         const lastAccess = req.session.lastAccess;
-        const sessionDuration = (new Date() - createdAt)/1000; //Duración de la sesión en segundos
+        const sessionDuration = (new Date() - new Date(createdAt))/1000; //Duración de la sesión en segundos
+        console.log(`La duración de la sesión es de ${sessionDuration} segundos.`);
         
         res.send(`
             <h1>Detalles de la sesion</h1>
             <p><strong>ID de sesión:</strong>${sessionId}</p>
+            <p><strong>Usuario:</strong>${user || 'No definido'}</p>
             <p><strong>Fecha de creación de la sesión:</strong>${createdAt}</p>
             <p><strong>último acceso:</strong>${lastAccess}</p>
             <p><strong>Duración de la sesión (en segundos):</strong>${sessionDuration}</p>
