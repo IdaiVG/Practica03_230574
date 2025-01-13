@@ -25,11 +25,16 @@ app.use((req,res, next)=>{
 });
 
 
+app.get('/login/:User',(req,res)=>{
+    req.session.User=req.params.User;
+    res.send("Usuario guardado");
+})
+
 //Ruta para mostrar la información de la sesión
 app.get('/session',(req,res)=>{
     if(req.session){
+        const User = req.session.User;
         const sessionId = req.session.id;
-        const user = req.session.user;
         const createdAt = req.session.createdAt;
         const lastAccess = req.session.lastAccess;
         const sessionDuration = (new Date() - new Date(createdAt))/1000; //Duración de la sesión en segundos
@@ -37,8 +42,8 @@ app.get('/session',(req,res)=>{
         
         res.send(`
             <h1>Detalles de la sesion</h1>
+            <p><strong>Usuario:</strong>${User}</p>
             <p><strong>ID de sesión:</strong>${sessionId}</p>
-            <p><strong>Usuario:</strong>${user || 'No definido'}</p>
             <p><strong>Fecha de creación de la sesión:</strong>${createdAt}</p>
             <p><strong>último acceso:</strong>${lastAccess}</p>
             <p><strong>Duración de la sesión (en segundos):</strong>${sessionDuration}</p>
