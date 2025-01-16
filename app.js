@@ -70,32 +70,25 @@ app.get('/status/:user',(req,res)=>{
             ultimoAcceso: lastAccess_CDMX,
             antiguedad: `${hours} horas, ${minutes} minutos y ${seconds} segundos`
         });
+        //const User = req.session.User;
+        //const sessionId = req.session.id;
+        //const createdAt = req.session.createdAt;
+        //const lastAccess = req.session.lastAccess;
+        //const sessionDuration = (new Date() - new Date(createdAt))/1000; //Duración de la sesión en segundos
+        //console.log(`La duración de la sesión es de ${sessionDuration} segundos.`);
         
+       // res.send(`
+       //     <h1>Detalles de la sesion</h1>
+        //    <p><strong>Usuario:</strong>${User}</p>
+          //  <p><strong>ID de sesión:</strong>${sessionId}</p>
+           // <p><strong>Fecha de creación de la sesión:</strong>${createdAt}</p>
+            //<p><strong>último acceso:</strong>${lastAccess}</p>
+            //<p><strong>Duración de la sesión (en segundos):</strong>${sessionDuration}</p>
+            //`);
     }else{
         res.send('No hay una sesión activa')
     }
 })
-app.get('/session/:user',(req,res)=>{
-    if(req.session.createdAt){
-const user = req.session.user;
-      const sessionId = req.session.id;
-        const createdAt = req.session.createdAt;
-        const lastAccess = req.session.lastAccess;
-        const sessionDuration = (new Date() - new Date(createdAt))/1000; //Duración de la sesión en segundos
-        console.log(`La duración de la sesión es de ${sessionDuration} segundos.`);
-        
-       res.send(`
-        <h1>Detalles de la sesion</h1>
-            <p><strong>Usuario:</strong>${user}</p>
-            <p><strong>ID de sesión:</strong>${sessionId}</p>
-            <p><strong>Fecha de creación de la sesión:</strong>${createdAt}</p>
-            <p><strong>último acceso:</strong>${lastAccess}</p>
-            <p><strong>Duración de la sesión (en segundos):</strong>${sessionDuration}</p>
-            `);
-        }else{
-            res.send('No hay una sesión activa')
-        }
-    })
 
 //Ruta para cerrar la sesión
 app.get('/logout/',(req,res)=>{
